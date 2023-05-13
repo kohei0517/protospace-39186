@@ -48,7 +48,8 @@ class PrototypesController < ApplicationController
   end
 
   def useronly
-    @user = User.find(params[:id])
+    @prototype= Prototype.find(params[:id])
+    @user = User.find(@prototype.user_id)
     unless current_user.id == @user.id
       redirect_to action: :index
     end 
